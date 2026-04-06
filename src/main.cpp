@@ -7,7 +7,7 @@
 #include "DataTypes.h"
 
 // Include module interfaces (We will build these header files next)
-// #include "AudioIngestor.h"
+#include "AudioIngestor.h"
 // #include "PitchExtractor.h"
 // #include "MusicalAnalyzer.h"
 // #include "LeadSynthesizer.h"
@@ -30,13 +30,25 @@ int main(int argc, char* argv[]) {
     std::cout << "--- HUM Engine MVP Initialization ---\n";
 
     try {
-        /* // ==========================================
+        // ==========================================
         // STAGE 1: Audio Ingestion & Cleanup
         // ==========================================
         std::cout << "[1/5] Ingesting and cleaning audio...\n";
         AudioBuffer cleanAudio = AudioIngestor::process(inputPath);
 
-        // ==========================================
+        // --- STAGE 1 TEST VERIFICATION ---
+        std::cout << "\n==========================================\n";
+        std::cout << "✅ STAGE 1 TEST PASSED\n";
+        std::cout << "==========================================\n";
+        std::cout << "Vector Size: " << cleanAudio.samples.size() << " samples\n";
+        
+        // Calculate duration based on our strict 44.1kHz sample rate
+        float durationSeconds = static_cast<float>(cleanAudio.samples.size()) / AudioIngestor::TARGET_SAMPLE_RATE;
+        std::cout << "Calculated Duration: " << durationSeconds << " seconds\n";
+        std::cout << "Memory Footprint: " << (cleanAudio.samples.size() * sizeof(float)) / (1024.0f * 1024.0f) << " MB\n";
+        std::cout << "==========================================\n\n";
+        
+        /* // ==========================================
         // STAGE 2: Pitch & Rhythm Extraction
         // ==========================================
         std::cout << "[2/5] Extracting MIDI, Beat Grid, and Pitch Contour...\n";

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUM Engine | Digital Audio Processor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="studio-workspace">
+        
+        <aside class="panel side-panel">
+            <h2>SETTINGS</h2>
+            
+            <div class="control-group">
+                <label>LEAD INSTRUMENT</label>
+                <select id="instrument" name="instrument" class="sleek-input">
+                    <option value="" disabled>-- Lead Instrument --</option>
+                    <option value="piano" selected>Piano</option>
+                    <option value="organ">Organ</option>
+                    <option value="harpsichord">Harpsichord</option>
+                    <option value="saxophone">Saxophone</option>
+                    <option value="trumpet">Trumpet</option>
+                    <option value="flute">Flute</option>
+                    <option value="acoustic guitar">Guitar</option>
+                    <option value="violin">Violin</option>
+                    <option value="cello">Cello</option>
+                    <option value="synth lead">Synth Lead</option>
+                    <option value="choir">Voice</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>BACKING TRACK</label>
+                <select id="backingInstrument" name="backingInstrument" class="sleek-input">
+                    <option value="" disabled>-- Backing Style --</option>
+                    <option value="jazz" selected>Piano Chords</option>
+                    <option value="halo pad">Synth Pad</option>
+                    <option value="strings">String Ensemble</option>
+                    <option value="choir">Choir</option>
+                </select>
+            </div>
+
+            <div class="control-group dsp-group">
+                <label>ENGINE FLAGS</label>
+                <div class="flags-vertical">
+                    <label class="checkbox-label"><input type="checkbox" id="zcr" value="true"> Enable ZCR Filter</label>
+                    <label class="checkbox-label"><input type="checkbox" id="flux" value="true"> Spectral Flux Slicing</label>
+                    <label class="checkbox-label"><input type="checkbox" id="delta" value="true"> Pitch Delta Tracking</label>
+                </div>
+            </div>
+        </aside>
+
+        <main class="panel center-panel">
+            <header class="app-header">
+                <h1>HUM ENGINE</h1>
+            </header>
+
+            <div class="transport-controls">
+                <label for="audioFile" class="sleek-input upload-btn">UPLOAD FILE</label>
+                <input type="file" id="audioFile" name="audioFile" accept="audio/*" class="hidden">
+                <span id="fileNameDisplay" class="file-name"></span>
+
+                <div class="massive-btn-container">
+                    <button type="button" id="humBtn" class="massive-btn">HUM</button>
+                    <span id="recordTimer" class="timer hidden">00:00</span>
+                </div>
+
+                <audio id="inputAudioPlayer" controls class="hidden input-player"></audio>
+
+                <div id="loadingIndicator" class="hidden loading-wrapper">
+                    <div class="spinner"></div>
+                    <p>Engine Running...</p>
+                </div>
+            </div>
+        </main>
+
+        <section id="resultsDashboard" class="panel side-panel">
+            <h2>OUTPUT</h2>
+            
+            <div id="resultsContent">
+                <audio id="outputAudio" controls class="output-player"></audio>
+                
+                <div class="analytics-grid">
+                    <div class="metric-card">
+                        <h3>KEY</h3>
+                        <p id="keyDisplay">--</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>BPM</h3>
+                        <p id="bpmDisplay">--</p>
+                    </div>
+                </div>
+
+                <div class="chord-container">
+                    <h3>PROGRESSION</h3>
+                    <pre id="chordDisplay">--</pre>
+                </div>
+            </div>
+
+            <div id="flowchartContainer" class="hidden flowchart-wrapper">
+                <div class="flowchart-step" id="step1">1. Audio Ingestion & Cleanup</div>
+                <div class="flowchart-arrow">↓</div>
+                <div class="flowchart-step" id="step2">2. Pitch & Rhythm Extraction</div>
+                <div class="flowchart-arrow">↓</div>
+                <div class="flowchart-step" id="step3">3. Harmonic Analysis</div>
+                <div class="flowchart-arrow">↓</div>
+                <div class="flowchart-step" id="step4">4. Accompaniment Synthesis</div>
+                <div class="flowchart-arrow">↓</div>
+                <div class="flowchart-step" id="step5">5. Lead Synthesis</div>
+                <div class="flowchart-arrow">↓</div>
+                <div class="flowchart-step" id="step6">6. Mixing & Exporting</div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

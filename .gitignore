@@ -1,1 +1,42 @@
+# ==========================================
+# C++ / CMAKE BUILD ARTIFACTS
+# ==========================================
+build/
+out/
+bin/
+obj/
+*.exe
+*.obj
+*.pdb
+*.ilk
+CMakeCache.txt
+CMakeFiles/
+
+# ==========================================
+# VS CODE & LOCAL SETTINGS
+# ==========================================
 .vscode/
+*.code-workspace
+
+# ==========================================
+# HEAVY ASSETS & DEPENDENCIES
+# ==========================================
+assets/*.sf2
+external/onnxruntime/lib/*.dll
+external/onnxruntime/lib/*.lib
+vcpkg/
+vcpkg_installed/
+
+# ==========================================
+# USER AUDIO DATA
+# ==========================================
+*.wav
+*.mp3
+*.mid
+*.midi
+
+# ==========================================
+# OS GENERATED FILES
+# ==========================================
+.DS_Store
+Thumbs.db

@@ -1,0 +1,351 @@
+:root {
+    /* --- NEW LIGHT/WARM PALETTE --- */
+    --bg-color: #EAE2B7;        /* Creamy Beige */
+    --panel-bg: #FFFFFF;        /* Clean White for readable panels */
+    
+    --text-main: #003049;       /* Deep Blue for main text */
+    --text-muted: #5a7585;      /* Softer blue for labels/subtitles */
+    
+    --accent-primary: #D62828;  /* Rich Red for main actions (HUM button) */
+    --accent-hover: #b01f1f;    /* Darker red for hover */
+    --accent-secondary: #F77F00;/* Vibrant Orange for secondary highlights */
+    --highlight-bg: #FCBF49;    /* Sunny Yellow for card backgrounds */
+    
+    --border-color: rgba(0, 48, 73, 0.15); /* Soft deep blue for borders */
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* --- THE 3-COLUMN STUDIO LAYOUT --- */
+.studio-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr; /* Center column is 50% wider than sides */
+    gap: 2rem;
+    width: 100%;
+    max-width: 1400px;
+    height: 85vh; /* Fills most of the screen */
+}
+
+.panel {
+    background-color: var(--panel-bg);
+    /* NEW: Solid Deep Blue outline */
+    border: 2px solid var(--text-main); 
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 48, 73, 0.05); 
+}
+
+/* ---.panel CENTER PANEL (TRANSPORT) --- */
+.center-panel {
+    align-items: center;
+    justify-content: center;
+    /* NEW: Slightly thicker Deep Blue outline for the main transport area */
+    border: 3px solid var(--text-main); 
+}
+
+.app-header h1 {
+    font-size: 3.5rem;
+    letter-spacing: 6px;
+    margin: 0 0 3rem 0;
+    color: var(--text-main);
+    text-align: center;
+}
+
+.transport-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.massive-btn-container {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.massive-btn {
+    width: 230px;     /* Increased from 180px */
+    height: 230px;    /* Increased from 180px */
+    border-radius: 50%;
+    background-color: var(--accent-primary);
+    color: white;
+    font-size: 2.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(214, 40, 40, 0.4);
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Ensures longer text is centered */
+    line-height: 1.2;   /* Keeps wrapped text tight */
+}
+
+.massive-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--accent-hover);
+    box-shadow: 0 12px 30px rgba(214, 40, 40, 0.5);
+}
+
+.massive-btn.recording {
+    animation: pulse 1.5s infinite;
+}
+
+.timer {
+    margin-top: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    font-weight: bold;
+}
+
+/* --- UI CONTROLS & INPUTS --- */
+.control-group {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.control-group label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.sleek-input {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    appearance: none;
+    text-align: center;
+    text-align-last: center; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sleek-input option {
+    color: var(--text-main); 
+    background-color: var(--panel-bg); 
+    text-align: center; 
+}
+
+.sleek-input:hover {
+    border-color: var(--accent-secondary);
+    color: var(--accent-secondary);
+}
+
+.upload-btn {
+    width: auto;
+    padding: 0.8rem 2rem;
+    color: var(--text-main);
+}
+
+.upload-btn:hover {
+    color: var(--accent-secondary);
+}
+
+.file-name {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--accent-secondary);
+    font-weight: bold;
+}
+
+/* --- DSP FLAGS --- */
+.flags-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.checkbox-label:hover {
+    color: var(--accent-secondary);
+}
+
+/* Add custom styling for checkboxes to match theme */
+input[type="checkbox"] {
+    accent-color: var(--accent-secondary);
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+/* --- OUTPUT & ANALYTICS --- */
+.analytics-grid {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    flex: 1;
+    background: rgba(252, 191, 73, 0.15); /* Soft Sunny Yellow tint */
+    border: 2px solid rgba(252, 191, 73, 0.4);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.metric-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.metric-card p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-primary);
+}
+
+.chord-container h3 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.chord-container pre {
+    background: rgba(252, 191, 73, 0.15); /* Soft Sunny Yellow tint */
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    line-height: 2;
+    overflow-x: auto;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: var(--text-main);
+    border: 2px solid rgba(252, 191, 73, 0.4);
+    margin: 0;
+}
+
+audio {
+    width: 100%;
+    margin-bottom: 2rem;
+    /* Inverts native audio player to look better on white */
+    filter: sepia(20%) hue-rotate(180deg) saturate(100%); 
+}
+
+.input-player {
+    margin-top: 2rem;
+    height: 40px;
+}
+
+/* --- UTILITIES --- */
+.hidden {
+    display: none !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 15px rgba(214, 40, 40, 0.4); }
+    50% { transform: scale(0.95); box-shadow: 0 0 35px rgba(214, 40, 40, 0.7); }
+    100% { transform: scale(1); box-shadow: 0 0 15px rgba(214, 40, 40, 0.4); }
+}
+
+.loading-wrapper {
+    margin-top: 2rem;
+    color: var(--accent-secondary);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Simple CSS Spinner matching the Orange Accent */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(247, 127, 0, 0.3);
+    border-top: 4px solid var(--accent-secondary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- LOADING FLOWCHART --- */
+.flowchart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.flowchart-step {
+    background: rgba(0, 48, 73, 0.05); /* Very light blue */
+    color: var(--text-muted);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.flowchart-step.visited {
+    background: rgba(247, 127, 0, 0.15); /* Light Orange */
+    color: var(--accent-secondary);      /* Vibrant Orange text */
+    border-color: var(--accent-secondary);
+}
+
+/* --- CURRENT STEP (Active processing) --- */
+.flowchart-step.active {
+    background: rgba(0, 48, 73, 0.10);   /* Light Blue */
+    color: var(--text-main);             /* Deep Blue text */
+    border-color: var(--text-main);
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0, 48, 73, 0.2);
+}
+
+.flowchart-arrow {
+    color: var(--border-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}

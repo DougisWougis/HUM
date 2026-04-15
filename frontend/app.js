@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Reset UI
             fileInput.value = '';
             fileNameDisplay.textContent = '';
-            resultsDashboard.classList.add('hidden');
             inputAudioPlayer.classList.add('hidden');
             inputAudioPlayer.src = '';
 
